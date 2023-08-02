@@ -16,3 +16,4 @@ mono_crash.*.json
 Godot Projects.csproj.old*
 *.csproj*
 *.sln
+Properties/launchSettings.json

@@ -234,6 +234,7 @@ public partial class DebugGUI : Control
     {
         Instance = this;
         Settings.Load();
+        DebugGUIGDScriptWrapper.RefreshScripts();
 
         if (Settings.enableGraphs)
         {
