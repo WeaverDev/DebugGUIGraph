@@ -122,6 +122,18 @@ Persistent logs may also be managed manually in the same way as graphs using arb
     }
 ```
 
+## GDScript Support
+
+Using DebugGUI Graph from GDScript requires Godot 4.2. GDScript does not support C#-style attribues, however the static methods of `DebugGUI` can be used manually from GDScript.
+
+```python
+func _ready():
+    DebugGUI.SetGraphProperties(self, "MyObject", 0.0, 10.0, 1, Color.WHITE, true)
+
+func _process(_delta):
+    DebugGUI.Graph(self, self.linear_velocity.length())
+```
+
 ## Contribution
 If you spot a bug while using this, please create an [Issue](https://github.com/WeaverDev/DebugGUIGraph/issues).
 
