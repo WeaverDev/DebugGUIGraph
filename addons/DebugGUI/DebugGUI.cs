@@ -117,6 +117,20 @@ public partial class DebugGUI : Control
     }
 
     /// <summary>
+    /// Set the properties of a graph.
+    /// </summary>
+    /// <param name="key">The graph's key</param>
+    /// <param name="label">The graph's label</param>
+    /// <param name="min">Value at the bottom of the graph box</param>
+    /// <param name="max">Value at the top of the graph box</param>
+    /// <param name="group">The graph's ordinal position on screen</param>
+    /// <param name="color">The graph's color</param>
+    public static void SetGraphProperties(GodotObject key, string label, float min, float max, int group, Color color, bool autoScale)
+    {
+        SetGraphProperties((object)key, label, min, max, group, color, autoScale);
+    }
+
+    /// <summary>
     /// Add a data point to a graph.
     /// </summary>
     /// <param name="key">The graph's key</param>
@@ -125,6 +139,16 @@ public partial class DebugGUI : Control
     {
         if (Settings.enableGraphs)
             Instance?.graphWindow.Graph(key, val);
+    }
+
+    /// <summary>
+    /// Add a data point to a graph.
+    /// </summary>
+    /// <param name="key">The graph's key</param>
+    /// <param name="val">Value to be added</param>
+    public static void Graph(GodotObject key, float val)
+    {
+        Graph((object)key, val);
     }
 
     /// <summary>
@@ -138,6 +162,15 @@ public partial class DebugGUI : Control
     }
 
     /// <summary>
+    /// Remove an existing graph.
+    /// </summary>
+    /// <param name="key">The graph's key</param>
+    public static void RemoveGraph(GodotObject key)
+    {
+        RemoveGraph((object)key);
+    }
+
+    /// <summary>
     /// Resets a graph's data.
     /// </summary>
     /// <param name="key">The graph's key</param>
@@ -145,6 +178,15 @@ public partial class DebugGUI : Control
     {
         if (Settings.enableGraphs)
             Instance?.graphWindow.ClearGraph(key);
+    }
+
+    /// <summary>
+    /// Resets a graph's data.
+    /// </summary>
+    /// <param name="key">The graph's key</param>
+    public static void ClearGraph(GodotObject key)
+    {
+        ClearGraph((object)key);
     }
 
     /// <summary>
@@ -188,12 +230,28 @@ public partial class DebugGUI : Control
     }
 
     /// <summary>
+    /// Create or update an existing message with the same key.
+    /// </summary>
+    public static void LogPersistent(GodotObject key, string message)
+    {
+        LogPersistent((object)key, message);
+    }
+
+    /// <summary>
     /// Remove an existing persistent message.
     /// </summary>
     public static void RemovePersistent(object key)
     {
         if (Settings.enableLogs)
             Instance?.logWindow.RemovePersistent(key);
+    }
+
+    /// <summary>
+    /// Remove an existing persistent message.
+    /// </summary>
+    public static void RemovePersistent(GodotObject key)
+    {
+        RemovePersistent((object)key);
     }
 
     /// <summary>
@@ -210,8 +268,24 @@ public partial class DebugGUI : Control
     /// </summary>
     public static void Log(object message)
     {
+        Log(message.ToString());
+    }
+
+    /// <summary>
+    /// Print a temporary message.
+    /// </summary>
+    public static void Log(GodotObject message)
+    {
+        Log(message.ToString());
+    }
+
+    /// <summary>
+    /// Print a temporary message.
+    /// </summary>
+    public static void Log(string message)
+    {
         if (Settings.enableLogs)
-            Instance?.logWindow.Log(message.ToString());
+            Instance?.logWindow.Log(message);
     }
 
     #endregion
