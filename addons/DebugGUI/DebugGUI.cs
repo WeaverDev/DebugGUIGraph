@@ -274,14 +274,6 @@ public partial class DebugGUI : Control
     /// <summary>
     /// Print a temporary message.
     /// </summary>
-    public static void Log(GodotObject message)
-    {
-        Log(message.ToString());
-    }
-
-    /// <summary>
-    /// Print a temporary message.
-    /// </summary>
     public static void Log(string message)
     {
         if (Settings.enableLogs)
