@@ -46,7 +46,7 @@ namespace WeavUtils
             }
             transientLogs.RemoveRange(0, expiredCt);
 
-            if (persistentLogs.Count + transientLogs.Count > 0)
+            if (debugGUIPrintFields.Count + debugGUIPrintProperties.Count + persistentLogs.Count + transientLogs.Count > 0)
             {
                 QueueRedraw();
             }
@@ -235,7 +235,7 @@ namespace WeavUtils
                     if (Attribute.GetCustomAttribute(objectProperties[i], typeof(DebugGUIPrintAttribute)) is DebugGUIPrintAttribute)
                     {
                         uniqueAttributeContainers.Add(node);
-                        typeCache.Add(node, node.GetType());
+                        typeCache[node] = node.GetType();
 
                         if (!debugGUIPrintProperties.ContainsKey(nodeType))
                         {
